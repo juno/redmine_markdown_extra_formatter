@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'bluefeather'
 
 module RedmineMarkdownExtraFormatter
@@ -7,7 +8,8 @@ module RedmineMarkdownExtraFormatter
     end
 
     def to_html(&block)
-      BlueFeather.parse(@text)
+      BlueFeather.parse(@text.gsub(/\[(.+)\]\((https?:\/\/.+)\)/, '[\1](/redirect/\2)'))
+#      BlueFeather.parse(@text).gsub(/href=(["'])(.+)(["'])/i, 'href=\1/redirect/\2\3')
     rescue => e
       return("<pre>problem parsing wiki text: #{e.message}\n"+
              "original text: \n"+
