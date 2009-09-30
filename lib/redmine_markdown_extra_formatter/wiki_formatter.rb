@@ -3,27 +3,21 @@ require 'bluefeather'
 
 module RedmineMarkdownExtraFormatter
   class WikiFormatter
-    
-    
     def initialize(text)
       @text = text
     end
 
     def to_html(&block)
-      
       @macros_runner = block
-
       parsedText = BlueFeather.parse(@text.gsub(/\[(.+)\]\((https?:\/\/.+)\)/, '[\1](/redirect/\2)'))
-      
       inline_macros(parsedText)
-      
     rescue => e
       return("<pre>problem parsing wiki text: #{e.message}\n"+
              "original text: \n"+
              @text+
              "</pre>")
     end
-    
+
     MACROS_RE = /
           (!)?                        # escaping
           (
@@ -32,10 +26,9 @@ module RedmineMarkdownExtraFormatter
           (\(([^\}]*)\))?             # optional arguments
           \}\}                        # closing tag
           )
-        /x 
-        
+        /x
+
     def inline_macros(text)
-      
       text.gsub!(MACROS_RE) do
         esc, all, macro = $1, $2, $3.downcase
         args = ($5 || '').split(',').each(&:strip)
@@ -49,9 +42,7 @@ module RedmineMarkdownExtraFormatter
           all
         end
       end
-      
       text
     end
-    
   end
 end
