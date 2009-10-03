@@ -20,7 +20,8 @@ module RedmineMarkdownExtraFormatter
     end
 
     def heads_for_wiki_formatter
-      stylesheet_link_tag('jstoolbar')
+      stylesheet_link_tag('jstoolbar') +
+        stylesheet_link_tag('markdown_extra', :plugin => 'redmine_markdown_extra_formatter')
     end
   end
 end

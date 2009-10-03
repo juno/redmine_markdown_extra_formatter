@@ -39,3 +39,9 @@
 .jstb_img {
 	background-image: url(../images/jstoolbar/bt_img.png);
 }
+
+/* TOC
+-------------------------------------------------------- */
+div.wiki ul.toc li.heading4 { margin-left: 18px; font-size: 0.8em; }
+div.wiki ul.toc li.heading5 { margin-left: 24px; font-size: 0.8em; }
+div.wiki ul.toc li.heading6 { margin-left: 30px; font-size: 0.8em; }
