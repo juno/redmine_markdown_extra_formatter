@@ -9,7 +9,7 @@ module RedmineMarkdownExtraFormatter
 
     def to_html(&block)
       @macros_runner = block
-      parsedText = BlueFeather.parse(@text.gsub(/\[(.+)\]\((https?:\/\/.+)\)/, '[\1](/redirect/\2)'))
+      parsedText = BlueFeather.parse(@text)
       inline_macros(parsedText)
     rescue => e
       return("<pre>problem parsing wiki text: #{e.message}\n"+

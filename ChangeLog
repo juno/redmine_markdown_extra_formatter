@@ -1,0 +1,4 @@
+2010-06-28  Junya Ogura  <junyaogura@gmail.com>
+
+	* 0.0.3 released:
+	revert external link redirection. (#2, #3)
