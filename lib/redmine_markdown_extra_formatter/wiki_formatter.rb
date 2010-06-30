@@ -136,10 +136,10 @@ module RedmineMarkdownExtraFormatter
       text
     end
 
-    PreCodeClassBlockRegexp = %r{^<pre><code\s+class="(\w+)">\s*\n(.+?)</code></pre>\n}m
+    PreCodeClassBlockRegexp = %r{^<pre><code\s+class="(\w+)">\s*\n(.+?)</code></pre>}m
 
-    def syntax_highlight( str )
-      str.gsub( PreCodeClassBlockRegexp ) {|block|
+    def syntax_highlight(str)
+      str.gsub(PreCodeClassBlockRegexp) {|block|
         syntax = $1.downcase
         "<pre><code class=\"#{syntax.downcase} CodeRay\">" +
         CodeRay.scan($2, syntax).html(:escape => true, :line_numbers => nil) +
