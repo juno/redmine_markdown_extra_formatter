@@ -1,3 +1,10 @@
+2010-06-30  Junya Ogura  <ogura@serverworks.co.jp>
+
+	* 0.0.4 released:
+	support Table of content ({toc} and {>toc}).
+	support Code highlighting (<pre><code class="LANG">...</code></pre>).
+	see http://www.redmine.org/wiki/1/RedmineTextFormatting
+
 2010-06-28  Junya Ogura  <junyaogura@gmail.com>
 
 	* 0.0.3 released:
