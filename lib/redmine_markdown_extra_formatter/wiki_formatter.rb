@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'bluefeather'
+require 'coderay'
 
 module BlueFeather
   class Parser
@@ -99,7 +100,8 @@ module RedmineMarkdownExtraFormatter
     def to_html(&block)
       @macros_runner = block
       parsedText = BlueFeather.parse(@text)
-      inline_macros(parsedText)
+      parsedText = inline_macros(parsedText)
+      parsedText = syntax_highlight(parsedText)
     rescue => e
       return("<pre>problem parsing wiki text: #{e.message}\n"+
              "original text: \n"+
@@ -132,6 +134,17 @@ module RedmineMarkdownExtraFormatter
         end
       end
       text
+    end
+
+    PreCodeClassBlockRegexp = %r{^<pre><code\s+class="(\w+)">\s*\n(.+?)</code></pre>\n}m
+
+    def syntax_highlight( str )
+      str.gsub( PreCodeClassBlockRegexp ) {|block|
+        syntax = $1.downcase
+        "<pre><code class=\"#{syntax.downcase} CodeRay\">" +
+        CodeRay.scan($2, syntax).html(:escape => true, :line_numbers => nil) +
+        "</code></pre>"
+      }
     end
   end
 end
