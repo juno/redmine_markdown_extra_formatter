@@ -141,7 +141,7 @@ module RedmineMarkdownExtraFormatter
     def syntax_highlight(str)
       str.gsub(PreCodeClassBlockRegexp) {|block|
         syntax = $1.downcase
-        "<pre><code class=\"#{syntax.downcase} CodeRay\">" +
+        "<pre><code class=\"#{syntax.downcase} syntaxhl\">" +
         CodeRay.scan($2, syntax).html(:escape => true, :line_numbers => nil) +
         "</code></pre>"
       }
