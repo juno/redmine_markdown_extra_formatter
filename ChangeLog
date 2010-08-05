@@ -1,4 +1,12 @@
-2010-06-30  Junya Ogura  <ogura@serverworks.co.jp>
+2010-08-06  Junya Ogura  <junyaogura@gmail.com>
+
+	* 0.0.5 released:
+	Fix link to help page so it works for Redmine installs that are not the
+	site root. (jamesvl)
+	Fix broken syntax highlighting by using CSS class "syntaxhl". (jamesvl)
+	Fixed plugin version number. (juno)
+
+2010-06-30  Junya Ogura  <junyaogura@gmail.com>
 
 	* 0.0.4 released:
 	support Table of content ({toc} and {>toc}).
