@@ -136,7 +136,7 @@ module RedmineMarkdownExtraFormatter
       text
     end
 
-    PreCodeClassBlockRegexp = %r{^<pre><code\s+class="(\w+)">\s*\n(.+?)</code></pre>}m
+    PreCodeClassBlockRegexp = %r{^<pre><code\s+class="(\w+)">\s*\n*(.+?)</code></pre>}m
 
     def syntax_highlight(str)
       str.gsub(PreCodeClassBlockRegexp) {|block|
