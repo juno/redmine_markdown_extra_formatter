@@ -105,7 +105,7 @@ module RedmineMarkdownExtraFormatter
     def gfm(text)
       # Extract pre blocks
       extractions = {}
-      text.gsub!(%r{<pre>.*?</pre>}m) do |match|
+      text.gsub!(%r{<pre>.*?</pre>|(?:(?:    |\t)[^\n]*\n)+}m) do |match|
         md5 = Digest::MD5.hexdigest(match)
         extractions[md5] = match
         "{gfm-extraction-#{md5}}"
