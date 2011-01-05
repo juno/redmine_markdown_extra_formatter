@@ -113,7 +113,11 @@ module RedmineMarkdownExtraFormatter
 
       # prevent foo_bar_baz from ending up with an italic word in the middle
       text.gsub!(/(\w+_\w+_\w[\w_]*)/) do |x|
-        x.gsub('_', '\_') if x.split('').sort.to_s[0..1] == '__'
+        if x.split('').sort.to_s[0..1] == '__'
+          x.gsub('_', '\_')
+        else
+          x
+        end
       end
 
       # in very clear cases, let newlines become <br /> tags
