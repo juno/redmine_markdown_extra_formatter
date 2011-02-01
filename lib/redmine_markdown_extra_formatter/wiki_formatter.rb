@@ -111,14 +111,8 @@ module RedmineMarkdownExtraFormatter
         "{gfm-extraction-#{md5}}"
       end
 
-      # prevent foo_bar_baz from ending up with an italic word in the middle
-      text.gsub!(/(\w+_\w+_\w[\w_]*)/) do |x|
-        if x.split('').sort.to_s[0..1] == '__'
-          x.gsub('_', '\_')
-        else
-          x
-        end
-      end
+      # escape underline characters that aren't on a word boundary
+      text.gsub!(%r{([^\s_]+\w+[^\s_]+)}) { |x| x.gsub('_', '\_') }
 
       # in very clear cases, let newlines become <br /> tags
       text.gsub!(/(\A|^$\n)(^\w[^\n]*\n)(^\w[^\n]*$)+/m) do |x|
