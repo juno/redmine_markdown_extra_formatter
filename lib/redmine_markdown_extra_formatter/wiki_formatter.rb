@@ -132,7 +132,7 @@ module RedmineMarkdownExtraFormatter
 
     def to_html(&block)
       @macros_runner = block
-      parsedText = @text
+      parsedText = @text.dup
       parsedText.gsub!("\r\n", "\n")
       parsedText = gfm(parsedText)
       parsedText = BlueFeather.parse(parsedText)
