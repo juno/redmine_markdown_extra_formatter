@@ -100,7 +100,9 @@ module RedmineMarkdownExtraFormatter
     def to_html(&block)
       @macros_runner = block
       parsedText = BlueFeather.parse(@text)
-      parsedText = inline_macros(parsedText)
+      unless Redmine::WikiFormatting::respond_to?(:execute_macros)
+        parsedText = inline_macros(parsedText)
+      end
       parsedText = syntax_highlight(parsedText)
     rescue => e
       return("<pre>problem parsing wiki text: #{e.message}\n"+
