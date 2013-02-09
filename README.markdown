@@ -48,3 +48,7 @@ Suggestions, Bugs, Refactoring?
 Fork away and create a Github Issue. Pull requests are welcome.
 http://github.com/juno/redmine_markdown_extra_formatter/tree/master
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/juno/redmine_markdown_extra_formatter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
