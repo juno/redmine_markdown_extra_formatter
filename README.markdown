@@ -1,3 +1,5 @@
+**THIS PROJECT IS DEPRECATED AND NO LONGER MAINTAIN. (Feb, 2018)**
+
 Redmine Markdown Extra formatter
 ================================
 
