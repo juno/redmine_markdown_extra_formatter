@@ -3,8 +3,7 @@ module RedmineMarkdownExtraFormatter
     unloadable
 
     def wikitoolbar_for(field_id)
-      url = Redmine::Utils.relative_url_root +
-        Engines::RailsExtensions::AssetHelpers.plugin_asset_path('redmine_markdown_extra_formatter', 'help', 'markdown_extra_syntax.html')
+      url = Engines::RailsExtensions::AssetHelpers.plugin_asset_path('redmine_markdown_extra_formatter', 'help', 'markdown_extra_syntax.html')
       help_link = l(:setting_text_formatting) + ': ' +
         link_to(l(:label_help), url,
         :onclick => "window.open(\"#{url}\", \"\", \"resizable=yes, location=no, width=300, height=640, menubar=no, status=no, scrollbars=yes\"); return false;")
